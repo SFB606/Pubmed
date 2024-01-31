@@ -1,6 +1,8 @@
 from pymed import PubMed
 from typing import List
+from haystack import Pipeline
 from haystack import component
+
 from haystack import Document
 from haystack.components.generators import HuggingFaceTGIGenerator
 from dotenv import load_dotenv
@@ -12,8 +14,11 @@ import time
 
 load_dotenv()
 
-os.environ['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'] = os.getenv('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')
+os.environ['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'] = os.getenv('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')
 
+# Get the value of the environment variable
+value = os.getenv('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')
+print(f"Value of environment variable: {value}")
 
 pubmed = PubMed(tool="Haystack2.0Prototype", email="dummyemail@gmail.com")
 
@@ -117,3 +122,5 @@ iface = gr.Interface(fn=ask, inputs=gr.Textbox(
     allow_flagging="never",)
 
 iface.launch(debug=True)
+    
+
